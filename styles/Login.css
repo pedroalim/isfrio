@@ -1,0 +1,95 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+#superior {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: rgb(81, 99, 114);
+    height: 90px;
+}
+
+#logo {
+    display: grid;
+    grid-column-start: 1;
+    grid-column-end: 1;
+    margin-top: 2px;
+    margin-left: 5%;
+    width: 200px;
+    height: 70px;
+}
+
+#botao {
+    display: grid;
+    grid-column-start: 3;
+    grid-column-end: 3;
+}
+
+#botaoCriar{
+    background-color: rgb(32, 137, 239);
+    width: 200px;
+    height: 70px;
+    border: none;
+    border-radius: 50px;
+    color: white;
+    margin-top: 2%;
+    margin-left: 40%;
+    font-size: 30px;
+    text-decoration: none;
+    box-shadow: 5px 5px 5px black;
+}
+
+a {
+    font-size: 30px;
+    text-decoration: none;
+    text-align: center;
+}
+
+#fundo {
+    background-image: url('../imagens/background.png');
+    height: 100vh;
+    background-repeat: no-repeat;
+}
+
+#formulario {
+    margin-top: 20px;
+    background: rgba(39, 38, 38, 0.6);
+    border-radius: 50px;
+    height: 450px;
+    width: 660px;
+    margin-left: 25%;
+    padding-top: 3%;
+}
+
+#forms {
+    text-align: center;
+    padding-top: 15px;
+}
+
+.entrar {
+    background-color: rgb(32, 137, 239);
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 5%;
+    color: white;
+    font-size: 25px;
+    border: none;
+    border-radius: 50px;
+    box-shadow: 5px 5px 5px black;
+}
+
+input::placeholder {
+    color: white;
+  }
+
+  #entrar{
+    margin-top: 5%;
+    box-shadow: 5px 5px 5px black;
+  }
+  
+  #entrar:hover{
+    background-color: rgb(33, 148, 201);
+  }
