@@ -10,7 +10,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Isfrio</title>
-    <link rel="stylesheet" href="styles/Login.css">
+    <link rel="stylesheet" href="styles/entrar1.css">
 </head>
 <body>
 <div id="fundo">
@@ -25,9 +25,9 @@
         <div id="formulario">
             <div id="forms">
                     <form method="POST">
-                    <input type="text" class="entrar" placeholder="🎃 Nome" name="nome">
+                    <input type="text" class="entrar" placeholder="🥼 Nome" name="nome">
                     <br>
-                    <input class="entrar" type="email" placeholder="✉ Email" name="email">
+                    <input class="entrar" type="email" placeholder="📧 Email" name="email">
                     <br>
                     <input class="entrar" type="password" placeholder="🔒 Senha" name="senha">
                     <br>

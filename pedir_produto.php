@@ -6,16 +6,27 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <img src="" alt="">
+    <link rel="stylesheet" href="styles/pedir.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
+    <title>isfrio</title>
 </head>
 <body>
-    <?php
+    <div id="navegador">
+        <a href="home.php" id="cancelar"><p>X | Cancelar</p></a>
+        <img src="imagens/navegador1.png" id="imgNavegador" alt="" width="450px" height="50px">
+    </div>
+    <div id="background">
+        <div id="etapa">
+            <h2>Modelo do Sorvete</h2>
+        </div>
+        <div id="campo">
+        <?php
+    
         session_start();
         if(!$_SESSION['id']){
             header("location: login.php");
@@ -30,13 +41,15 @@
             $nome = $produtos[$i]["nome"];
             $id = $produtos[$i]["id"];
             $img = $produtos[$i]["img"];
-            echo "$nome<br>
+            echo "
             <input type='hidden' value='$id'>
             <img src='$img' alt=''>";
         }
-
+    
     ?>
+        </div>
+    </div>
 
-    <h1>HELOLO MOTO</h1>
+
 </body>
 </html>

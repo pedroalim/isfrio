@@ -29,21 +29,20 @@
 #botaoCriar{
     background-color: rgb(32, 137, 239);
     width: 200px;
-    height: 70px;
+    height: 50px;
     border: none;
     border-radius: 50px;
     color: white;
-    margin-top: 2%;
     margin-left: 40%;
+    margin-top: 2%;
     font-size: 30px;
     text-decoration: none;
     box-shadow: 5px 5px 5px black;
 }
 
 a {
-    font-size: 30px;
-    text-decoration: none;
     text-align: center;
+    padding-top: 20px;
 }
 
 #fundo {
