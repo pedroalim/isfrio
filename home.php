@@ -28,7 +28,7 @@
             <a class="navegador" href="contato.php">Contato</a>
         </div>
         <div id="botaoSorvete">
-            <a class="navegador" href="pedir_produto.php">Pedir Sorvete</a>
+            <a class="navegador" href="pedir/tipoSorvete.php">Pedir Sorvete</a>
         </div>
         <div id="botaoCarrinho">
             <a href="carrinho.php">

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 22-Set-2022 às 16:26
+-- Tempo de geração: 23-Set-2022 às 17:04
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 8.1.2
 
@@ -31,17 +31,18 @@ USE `isfrio`;
 
 CREATE TABLE `adicionais` (
   `id` int(11) NOT NULL,
-  `nome` varchar(666) NOT NULL
+  `nome` varchar(666) NOT NULL,
+  `preco` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `adicionais`
 --
 
-INSERT INTO `adicionais` (`id`, `nome`) VALUES
-(1, 'M&M’s'),
-(2, 'Chocolates'),
-(3, 'Marshmallows');
+INSERT INTO `adicionais` (`id`, `nome`, `preco`) VALUES
+(1, 'M&M’s', '0.50'),
+(2, 'Chocolates', '0.75'),
+(3, 'Marshmallows', '0.40');
 
 -- --------------------------------------------------------
 
@@ -51,17 +52,18 @@ INSERT INTO `adicionais` (`id`, `nome`) VALUES
 
 CREATE TABLE `coberturas` (
   `id` int(11) NOT NULL,
-  `nome` varchar(666) NOT NULL
+  `nome` varchar(666) NOT NULL,
+  `preco` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `coberturas`
 --
 
-INSERT INTO `coberturas` (`id`, `nome`) VALUES
-(1, 'Beterraba'),
-(2, 'Churros'),
-(3, 'Kiwi');
+INSERT INTO `coberturas` (`id`, `nome`, `preco`) VALUES
+(1, 'Beterraba', '1.00'),
+(2, 'Churros', '1.00'),
+(3, 'Kiwi', '0.75');
 
 -- --------------------------------------------------------
 
@@ -71,17 +73,18 @@ INSERT INTO `coberturas` (`id`, `nome`) VALUES
 
 CREATE TABLE `massas` (
   `id` int(11) NOT NULL,
-  `nome` varchar(666) NOT NULL
+  `nome` varchar(666) NOT NULL,
+  `preco` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `massas`
 --
 
-INSERT INTO `massas` (`id`, `nome`) VALUES
-(1, 'Beterraba'),
-(2, 'Chocolate'),
-(3, 'Banana');
+INSERT INTO `massas` (`id`, `nome`, `preco`) VALUES
+(1, 'Beterraba', '2.00'),
+(2, 'Chocolate', '2.00'),
+(3, 'Banana', '2.00');
 
 -- --------------------------------------------------------
 
@@ -92,8 +95,19 @@ INSERT INTO `massas` (`id`, `nome`) VALUES
 CREATE TABLE `pedidos` (
   `id` int(11) NOT NULL,
   `id_usuario` int(11) NOT NULL,
-  `id_produto` int(11) NOT NULL
+  `bairro` varchar(20) NOT NULL,
+  `rua` varchar(20) NOT NULL,
+  `numero` int(8) NOT NULL,
+  `complemento` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `pedidos`
+--
+
+INSERT INTO `pedidos` (`id`, `id_usuario`, `bairro`, `rua`, `numero`, `complemento`) VALUES
+(27, 6, 'Jardim América', 'bozo', 123, ''),
+(28, 6, 'Jardim América', 'rua abdala abujamra', 288, '');
 
 -- --------------------------------------------------------
 
@@ -103,11 +117,20 @@ CREATE TABLE `pedidos` (
 
 CREATE TABLE `pedidos_complementos` (
   `id` int(11) NOT NULL,
-  `id_pedido` int(11) NOT NULL,
-  `id_cobertura` int(11) NOT NULL,
-  `id_massa` int(11) NOT NULL,
-  `id_adiconal` int(11) NOT NULL
+  `id_produto` int(11) NOT NULL,
+  `id_cobertura` varchar(11) NOT NULL,
+  `id_massa` varchar(11) NOT NULL,
+  `id_adiconal` varchar(11) NOT NULL,
+  `id_pedido` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `pedidos_complementos`
+--
+
+INSERT INTO `pedidos_complementos` (`id`, `id_produto`, `id_cobertura`, `id_massa`, `id_adiconal`, `id_pedido`) VALUES
+(27, 2, '2', '3', '2', 27),
+(28, 2, '2', '1,2', '1,3', 28);
 
 -- --------------------------------------------------------
 
@@ -223,13 +246,13 @@ ALTER TABLE `massas`
 -- AUTO_INCREMENT de tabela `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT de tabela `pedidos_complementos`
 --
 ALTER TABLE `pedidos_complementos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT de tabela `produtos`

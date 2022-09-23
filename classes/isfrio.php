@@ -86,6 +86,131 @@ class isfrio{
         endif;
 
     }
+
+    public function procurarMassas(){
+
+        global $pdo;
+
+        $sql= $pdo->prepare("SELECT * FROM massas");
+
+        $sql-> execute();
+
+        if($sql->rowCount()>0):
+            $dados = $sql->fetchAll();
+           
+            return $dados; //logado com Sucesso
+
+        else:
+            return [];
+
+        endif;
+
+    }
+
+    public function procurarCoberturas(){
+
+        global $pdo;
+
+        $sql= $pdo->prepare("SELECT * FROM coberturas");
+
+        $sql-> execute();
+
+        if($sql->rowCount()>0):
+            $dados = $sql->fetchAll();
+           
+            return $dados; //logado com Sucesso
+
+        else:
+            return [];
+
+        endif;
+
+    }
+
+    
+    public function procurarAdiconais(){
+
+        global $pdo;
+
+        $sql= $pdo->prepare("SELECT * FROM adicionais");
+
+        $sql-> execute();
+
+        if($sql->rowCount()>0):
+            $dados = $sql->fetchAll();
+           
+            return $dados; //logado com Sucesso
+
+        else:
+            return [];
+
+        endif;
+
+    }
+
+    public function finalizarPedidos($bairro, $rua, $numero, $complemento){
+        global $pdo;
+        
+        $sql = $pdo->prepare("INSERT INTO pedidos (id_usuario, bairro, rua, numero, complemento) VALUES (:u, :b, :r, :n, :c)");
+        $sql-> bindValue(":u", $_SESSION['id']);
+        $sql-> bindValue(":b", $bairro);
+        $sql-> bindValue(":r", $rua);
+        $sql-> bindValue(":n", $numero);
+        $sql-> bindValue(":c", $complemento);
+        $sql->execute();
+
+        $sql = $pdo->prepare("SELECT LAST_INSERT_ID()");
+        $sql->execute();
+        $id = $sql->fetch();
+
+        return $id;
+    }
+
+    public function finalizarComplementos($id_pedido){
+        global $pdo;
+        
+        $sql = $pdo->prepare("INSERT INTO pedidos_complementos (id_produto, id_cobertura, id_massa, id_adiconal, id_pedido) VALUES (:p, :c, :m, :a, :i)");
+        $sql-> bindValue(":p", $_SESSION['modelo']);
+        $sql-> bindValue(":m", $_SESSION['massas']);
+        $sql-> bindValue(":c", $_SESSION['coberturas']);
+        $sql-> bindValue(":a", $_SESSION['adicionais']);
+        $sql-> bindValue(":i", $id_pedido);
+        $sql->execute();
+        return true;
+
+    }
+
+    public function buscarProdutos(){
+        global $pdo;
+        $sql = $pdo->prepare("SELECT nome FROM produtos WHERE id = :a");
+        $sql-> bindValue(":a", $_SESSION['modelo']);
+        $sql-> execute();
+
+        if($sql->rowCount()>0){
+            $dados = $sql->fetch();
+           
+            return $dados; 
+        }
+    }
+
+    public function buscarMassas(){
+        $massasEx = explode(",", $_SESSION['massas']);
+        
+        for($i = 0; $i < 2; $i++){
+            global $pdo;
+            $sql = $pdo->prepare("SELECT nome, preco FROM massas WHERE id = :m");
+            $sql-> bindValue(":m", $massasEx[$i]);
+            $sql-> execute();
+
+            if($sql->rowCount()>0){
+                $dados = $sql->fetch();
+                print_r($dados);
+                
+            }
+        } 
+
+    }
+
 }
 
 ?>
