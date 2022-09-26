@@ -31,7 +31,7 @@
             <a class="navegador" href="pedir/tipoSorvete.php">Pedir Sorvete</a>
         </div>
         <div id="botaoCarrinho">
-            <a href="carrinho.php">
+            <a href="compras.php">
                 <img src="imagens/carrinho2.png" id="imagemSuperior" alt="" width="50px" height="50px">
             </a>
         </div>

@@ -23,7 +23,7 @@
     </div>
     <div id="background">
         <div id="etapa">
-            <h2>Cobertura do Sorvete</h2>
+            <h2>Adicionais do Sorvete</h2>
         </div>
         <div id="campo">
         <form method="post">

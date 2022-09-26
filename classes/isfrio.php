@@ -180,23 +180,52 @@ class isfrio{
 
     }
 
-    public function buscarProdutos(){
+    public function buscarPedidos(){
         global $pdo;
-        $sql = $pdo->prepare("SELECT nome FROM produtos WHERE id = :a");
-        $sql-> bindValue(":a", $_SESSION['modelo']);
+        $sql = $pdo->prepare("SELECT * FROM pedidos WHERE id_usuario = :u");
+        $sql-> bindValue(":u", $_SESSION['id']);
         $sql-> execute();
 
         if($sql->rowCount()>0){
-            $dados = $sql->fetch();
-           
+            $dados = $sql->fetchAll();
+            
             return $dados; 
         }
     }
 
-    public function buscarMassas(){
-        $massasEx = explode(",", $_SESSION['massas']);
-        
-        for($i = 0; $i < 2; $i++){
+    public function buscarComplementos($id_pedido){
+        global $pdo;
+        $sql = $pdo->prepare("SELECT * FROM pedidos_complementos WHERE id_pedido = :i");
+        $sql-> bindValue(":i", $id_pedido);
+        $sql-> execute();
+
+        if($sql->rowCount()>0){
+            $dados = $sql->fetch();
+            
+            return $dados; 
+        }
+    }
+
+
+    public function buscarProdutos($produto){
+        global $pdo;
+        $sql = $pdo->prepare("SELECT nome FROM produtos WHERE id = :a");
+        $sql-> bindValue(":a", $produto);
+        $sql-> execute();
+
+        if($sql->rowCount()>0){
+            $dados = $sql->fetch();
+            
+            return $dados; 
+        }
+    }
+
+    public function buscarMassas($massa){
+        $massasEx = explode(",", $massa);
+        $quantidadeMassas = count($massasEx);
+	 	
+        $arrayM = [];
+        for($i = 0; $i < $quantidadeMassas; $i++){
             global $pdo;
             $sql = $pdo->prepare("SELECT nome, preco FROM massas WHERE id = :m");
             $sql-> bindValue(":m", $massasEx[$i]);
@@ -204,13 +233,87 @@ class isfrio{
 
             if($sql->rowCount()>0){
                 $dados = $sql->fetch();
-                print_r($dados);
+                array_push($arrayM, $dados);
+            }
+        } 
+        return $arrayM;
+
+    }
+	
+	public function buscarCoberturas($cobertura){
+        $coberturasEx = explode(",", $cobertura);
+        $quantidadeCoberturas = count($coberturasEx);
+		
+        $arrayC = [];
+        for($i = 0; $i < $quantidadeCoberturas; $i++){
+            global $pdo;
+            $sql = $pdo->prepare("SELECT nome, preco FROM coberturas WHERE id = :m");
+            $sql-> bindValue(":m", $coberturasEx[$i]);
+            $sql-> execute();
+
+            if($sql->rowCount()>0){
+                $dados = $sql->fetch();
+                array_push($arrayC, $dados);
+            }
+        } 
+        return $arrayC;
+    }
+	
+		public function buscarAdicionais($adicionais){
+        $adicionaisEx = explode(",", $adicionais);
+        $quantidadeAdicionais = count($adicionaisEx); 
+
+        $arrayA = [];
+        for($i = 0; $i < $quantidadeAdicionais; $i++){
+            global $pdo;
+            $sql = $pdo->prepare("SELECT nome, preco FROM adicionais WHERE id = :m");
+            $sql-> bindValue(":m", $adicionaisEx[$i]);
+            $sql-> execute();
+
+            if($sql->rowCount()>0){
+                $dados = $sql->fetch();
+                array_push($arrayA, $dados);
                 
             }
         } 
-
+        return $arrayA;
     }
 
+    public function buscarCliente(){
+        
+        global $pdo;
+        $sql = $pdo->prepare("SELECT nome, email FROM usuarios WHERE id = :i");
+        $sql-> bindValue(":i", $_SESSION['id']);
+        $sql-> execute();
+
+        if($sql->rowCount()>0){
+            $dados = $sql->fetch();
+            
+            return $dados; 
+        } 
+    }
+    
+    public function atualizarCliente($nome, $email){
+
+        global $pdo;
+        $sql = $pdo->prepare("UPDATE usuarios SET nome = :n, email = :e WHERE id = :i");
+        $sql-> bindValue(":i", $_SESSION['id']);
+        $sql-> bindValue(":n", $nome);
+        $sql-> bindValue(":e", $email);
+        $sql-> execute();
+
+        return;
+    }
+
+    public function deletarCliente(){
+
+        global $pdo;
+        $sql = $pdo->prepare("DELETE FROM usuarios WHERE id = :i");
+        $sql-> bindValue(":i", $_SESSION['id']);
+        $sql-> execute();
+
+        return;
+    }
 }
 
 ?>

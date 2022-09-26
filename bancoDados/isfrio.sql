@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 23-Set-2022 às 17:04
+-- Tempo de geração: 26-Set-2022 às 16:35
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 8.1.2
 
@@ -107,7 +107,9 @@ CREATE TABLE `pedidos` (
 
 INSERT INTO `pedidos` (`id`, `id_usuario`, `bairro`, `rua`, `numero`, `complemento`) VALUES
 (27, 6, 'Jardim América', 'bozo', 123, ''),
-(28, 6, 'Jardim América', 'rua abdala abujamra', 288, '');
+(28, 6, 'Jardim América', 'rua abdala abujamra', 288, ''),
+(29, 6, 'Jardim América', 'rua abdala abujamra', 288, ''),
+(30, 6, 'Jardim América', 'rua abdala abujamra', 288, '');
 
 -- --------------------------------------------------------
 
@@ -130,7 +132,9 @@ CREATE TABLE `pedidos_complementos` (
 
 INSERT INTO `pedidos_complementos` (`id`, `id_produto`, `id_cobertura`, `id_massa`, `id_adiconal`, `id_pedido`) VALUES
 (27, 2, '2', '3', '2', 27),
-(28, 2, '2', '1,2', '1,3', 28);
+(28, 2, '2', '1,2', '1,3', 28),
+(29, 2, '2', '2,3', '1', 29),
+(30, 1, '3', '1', '2', 30);
 
 -- --------------------------------------------------------
 
@@ -171,8 +175,9 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `email`, `senha`, `nome`, `imagem`) VALUES
-(1, 'zugor@gmail.com', '202cb962ac59075b964b07152d234b70', 'zugor', ''),
-(6, 'bolsonaroOficial@gmail.com', '202cb962ac59075b964b07152d234b70', 'Bolsonaro', '');
+(6, 'bolsonaro@gmail.com', '202cb962ac59075b964b07152d234b70', 'Lucas', ''),
+(7, 'zugor@gmail.com', '202cb962ac59075b964b07152d234b70', 'zugor', ''),
+(8, 'bozo@gmail.com', '202cb962ac59075b964b07152d234b70', 'bozo', '');
 
 --
 -- Índices para tabelas despejadas
@@ -246,13 +251,13 @@ ALTER TABLE `massas`
 -- AUTO_INCREMENT de tabela `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT de tabela `pedidos_complementos`
 --
 ALTER TABLE `pedidos_complementos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT de tabela `produtos`
@@ -264,7 +269,7 @@ ALTER TABLE `produtos`
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

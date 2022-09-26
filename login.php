@@ -10,7 +10,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Isfrio</title>
-    <link rel="stylesheet" href="styles/entrar1.css">
+    <link rel="stylesheet" href="styles/entrar.css">
 </head>
 <body>
 <div id="fundo">
@@ -30,6 +30,71 @@
                     <input class="entrar" type="password" placeholder="🔒 Senha" name="senha">
                     <br>
                     <input class="entrar" id="entrar" type="submit" value="Entrar">
+                    <?php
+
+                        if(isset($_POST['email'])):
+                            
+                            $email = addslashes($_POST['email']);
+                            $senha = addslashes($_POST['senha']);
+
+                            if(!empty($email) && !empty($senha)):
+
+                                $u->conectar("isfrio", "localhost", "root", "");
+
+                                if($u->msgERRO == ""):
+
+                                    if($u->logar($email, $senha)):
+
+                                        header("location: home.php");
+
+                                
+                                    else: 
+
+                                        ?>
+
+                                        <div class="msg-erro">
+                                            E-mail e/ou Senha Incorretos!
+                                        </div>
+
+                                        <?php
+
+                                    endif;
+
+                                else:
+
+                                    ?>
+                                
+                                    <div class="msg-erro"> 
+                                        
+                                        <?php echo "Erro: ".$u->msgERRO; ?>
+                                    
+                                    </div>
+
+                                    <?php
+
+
+                                
+                                endif;
+
+                            else:
+
+                                ?>
+
+                                    <div class="msg-erro">
+                                        Preencha Todos os Campos!
+                                    </div>
+
+                                <?php
+
+
+
+
+                            endif;
+
+
+                        endif;
+
+                        ?>
                 </form>
             </div>
         </div>
@@ -37,68 +102,3 @@
 </body>
 </html>
 
-<?php
-
-if(isset($_POST['email'])):
-    
-    $email = addslashes($_POST['email']);
-    $senha = addslashes($_POST['senha']);
-
-    if(!empty($email) && !empty($senha)):
-
-        $u->conectar("isfrio", "localhost", "root", "");
-
-        if($u->msgERRO == ""):
-
-            if($u->logar($email, $senha)):
-
-                header("location: home.php");
-
-        
-            else: 
-
-                ?>
-
-                <div class="msg-erro">
-                    E-mail e/ou Senha Incorretos!
-                </div>
-
-                <?php
-
-            endif;
-
-        else:
-
-            ?>
-           
-            <div class="msg-erro"> 
-                
-                 <?php echo "Erro: ".$u->msgERRO; ?>
-            
-            </div>
-
-            <?php
-
-
-        
-        endif;
-
-    else:
-
-        ?>
-
-            <div class="msg-erro">
-                Preencha Todos os Campos!
-            </div>
-
-        <?php
-
-
-
-
-    endif;
-
-
-endif;
-
-?>

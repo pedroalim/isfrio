@@ -83,6 +83,7 @@
         $id_pedido = $u->finalizarPedidos($bairro, $rua, $numero, $complemento);
 
         $u->finalizarComplementos($id_pedido[0]);
+        header("location: home.php");
     } else {
         echo "Preencha todos os dados";
     }
