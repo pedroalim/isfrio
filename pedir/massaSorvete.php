@@ -9,7 +9,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../styles/pedir.css">
+    <link rel="stylesheet" href="../styles/pedir1.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
@@ -51,20 +51,34 @@
                 }
         
             ?>
-                <input type="submit" value="Proximo">
+                <input type="submit" value="Proximo" name="proximo">
+                <?php
+                    $proximo = $_POST["proximo"] = (isset($_POST["proximo"])) ? $_POST["proximo"] : null;
+                    $preco = isset($preco);
+
+                    if($proximo){
+                        $massas = $_POST["massas"] = (isset($_POST["massas"])) ? $_POST["massas"] : null;
+                        if ($massas != 0) {
+                            $massas = implode(",", $massas);
+                            $_SESSION['massas'] = $massas;
+                            $valor = $u -> buscarPrecosMassas($massas);
+                            $massasEx = explode(",", $massas);
+                            $quantidadeMassas = count($massasEx);
+                            for($i = 0; $i < $quantidadeMassas; $i++){
+                                $preco = $preco + $valor[$i]["preco"];
+                                print_r($valor[$i]["preco"]);
+                            }
+                            $_SESSION['preco'] = $preco;
+                            echo"<br>";
+                            echo($_SESSION['preco']);
+                            header("Location: coberturaSorvete.php");
+                        }  else {
+                            echo "<div class='msg-erro'>Escolha um sabor para prosseguir!</div>";
+                        }
+                    }
+                ?>
             </form>
         </div>
     </div>
 </body>
 </html>
-
-<?php
-    $massas = $_POST["massas"] = (isset($_POST["massas"])) ? $_POST["massas"] : null;
-    $massas = implode(",", $massas);
-    $_SESSION['massas'] = $massas;
-    print_r($_SESSION['massas']);
-
-    if ($_SESSION['massas'] != 0) {
-        header("Location: coberturaSorvete.php");
-    } 
-?>

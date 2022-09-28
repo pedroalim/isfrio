@@ -9,7 +9,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../styles/pedir.css">
+    <link rel="stylesheet" href="../styles/pedir1.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
@@ -52,19 +52,22 @@
                 }
         
             ?>
-                <input type="submit" value="Proximo">
+                <input type="submit" value="Proximo" name="proximo">
+
+                <?php
+                    $modelo = $_POST["tipo"] = (isset($_POST["tipo"])) ? $_POST["tipo"] : null;
+                    $_SESSION['modelo'] = $modelo;
+                    $proximo = $_POST["proximo"] = (isset($_POST["proximo"])) ? $_POST["proximo"] : null;
+                    if($proximo){
+                        if ($_SESSION['modelo'] != 0) {
+                            header("Location: massaSorvete.php");
+                        } else {
+                            echo "<div class='msg-erro'>Escolha um modelo para prosseguir!</div>";
+                        }
+                    }
+                ?>
             </form>
         </div>
     </div>
 </body>
 </html>
-
-<?php
-    $modelo = $_POST["tipo"] = (isset($_POST["tipo"])) ? $_POST["tipo"] : null;;
-    $_SESSION['modelo'] = $modelo;
-    echo $_SESSION['modelo'];
-
-    if ($_SESSION['modelo'] != 0) {
-        header("Location: massaSorvete.php");
-    } 
-?>

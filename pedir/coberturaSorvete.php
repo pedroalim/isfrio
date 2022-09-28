@@ -9,7 +9,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../styles/pedir.css">
+    <link rel="stylesheet" href="../styles/pedir1.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
@@ -45,27 +45,38 @@
                     echo " 
                     <br>
                         $nome 
-                        <input type='checkbox' name='coberturas[]' value='$id'>
+                        <input type='checkbox' name='coberturas[]' autocomplete='off' value='$id'>
                     <br>
                     ";
                 }
         
             ?>
-                <input type="submit" value="Proximo">
+                <input type="submit" value="Proximo" autocomplete='off' name="proximo">
+                <?php
+                    $proximo = $_POST["proximo"] = (isset($_POST["proximo"])) ? $_POST["proximo"] : null;
+                    if($proximo){
+                        $coberturas = $_POST["coberturas"] = (isset($_POST["coberturas"])) ? $_POST["coberturas"] : null;
+                        if($coberturas != 0){
+                            $coberturas = implode(",", $coberturas);
+                            $_SESSION['coberturas'] = $coberturas;
+                            $valor = $u -> buscarPrecosCoberturas($coberturas);
+                            $coberturasEx = explode(",", $coberturas);
+                            $quantidadeCoberturas = count($coberturasEx);
+                            for($i = 0; $i < $quantidadeCoberturas; $i++){
+                                $_SESSION['preco'] =  $_SESSION['preco'] + $valor[$i]["preco"];
+                                print_r($valor[$i]["preco"]);
+                            }
+                            echo"<br>";
+                            echo($_SESSION['preco']);
+                        } else {
+                            $_SESSION['coberturas'] = "";
+                        }
+                        //header("Location: adicionaisSorvete.php");
+                    }
+                ?>
             </form>
         </div>
     </div>
 </body>
 </html>
 
-<?php
-    $coberturas = $_POST["coberturas"] = (isset($_POST["coberturas"])) ? $_POST["coberturas"] : null;
-    $coberturas = implode(",", $coberturas);
-    $_SESSION['coberturas'] = $coberturas;
-
-    print_r($_SESSION['coberturas']);
-
-    if ($_SESSION['coberturas'] != 0) {
-        header("Location: adicionaisSorvete.php");
-    } 
-?>

@@ -36,24 +36,29 @@
         $massas = $u->buscarMassas($complementos["id_massa"]);
         $qtdMassa = count($massas);
         for($m = 0; $m < $qtdMassa; $m++){
-            echo "Massas:";
+            echo "Massas: ";
             echo $massas[$m]["nome"];
             echo "<br>";     
         }
         $coberturas = $u->buscarCoberturas($complementos["id_cobertura"]);
         $qtdCobertura = count($coberturas);
         for($c = 0; $c < $qtdCobertura; $c++){
-            echo "Coberturas:";
+            echo "Coberturas: ";
             echo $coberturas[$c]["nome"];
             echo "<br>";     
         }
         $adicionais = $u->buscarAdicionais($complementos["id_adiconal"]);
         $qtdAdicional = count($adicionais);
         for($a = 0; $a < $qtdAdicional; $a++){
-            echo "Adicionais:";
+            echo "Adicionais: ";
             echo $adicionais[$a]["nome"];
             echo "<br>";     
         }
+        $precoTotal = $u->buscarPrecoTotal($pedidos[$i]["id"]);
+        echo "Preco Total: ";
+        print_r($precoTotal[0]);
+        echo "<br>";   
     }
+    
     ?>
 </body>

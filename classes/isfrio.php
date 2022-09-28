@@ -107,6 +107,25 @@ class isfrio{
 
     }
 
+    public function buscarPrecosMassas($massas){
+        $massasEx = explode(",", $massas);
+        $quantidadeMassas = count($massasEx);
+	 	
+        $valorM = [];
+        for($i = 0; $i < $quantidadeMassas; $i++){
+            global $pdo;
+            $sql = $pdo->prepare("SELECT preco FROM massas WHERE id = :m");
+            $sql-> bindValue(":m", $massasEx[$i]);
+            $sql-> execute();
+
+            if($sql->rowCount()>0){
+                $dados = $sql->fetch();
+                array_push($valorM, $dados);
+            }
+        } 
+        return $valorM;
+    }
+
     public function procurarCoberturas(){
 
         global $pdo;
@@ -125,6 +144,25 @@ class isfrio{
 
         endif;
 
+    }
+
+    public function buscarPrecosCoberturas($coberturas){
+        $coberturasEx = explode(",", $coberturas);
+        $quantidadeCoberturas= count($coberturasEx);
+	 	
+        $valorC = [];
+        for($i = 0; $i < $quantidadeCoberturas; $i++){
+            global $pdo;
+            $sql = $pdo->prepare("SELECT preco FROM coberturas WHERE id = :m");
+            $sql-> bindValue(":m", $coberturasEx[$i]);
+            $sql-> execute();
+
+            if($sql->rowCount()>0){
+                $dados = $sql->fetch();
+                array_push($valorC, $dados);
+            }
+        } 
+        return $valorC;
     }
 
     
@@ -148,15 +186,35 @@ class isfrio{
 
     }
 
-    public function finalizarPedidos($bairro, $rua, $numero, $complemento){
+    public function buscarPrecosAdicionais($adicionais){
+        $adicionaisEx = explode(",", $adicionais);
+        $quantidadeAdicionais = count($adicionaisEx);
+	 	
+        $valorA = [];
+        for($i = 0; $i < $quantidadeAdicionais; $i++){
+            global $pdo;
+            $sql = $pdo->prepare("SELECT preco FROM adicionais WHERE id = :m");
+            $sql-> bindValue(":m", $adicionaisEx[$i]);
+            $sql-> execute();
+
+            if($sql->rowCount()>0){
+                $dados = $sql->fetch();
+                array_push($valorA, $dados);
+            }
+        } 
+        return $valorA;
+    }
+
+    public function finalizarPedidos($bairro, $rua, $numero, $complemento, $preco){
         global $pdo;
         
-        $sql = $pdo->prepare("INSERT INTO pedidos (id_usuario, bairro, rua, numero, complemento) VALUES (:u, :b, :r, :n, :c)");
+        $sql = $pdo->prepare("INSERT INTO pedidos (id_usuario, bairro, rua, numero, complemento, preco) VALUES (:u, :b, :r, :n, :c, :p)");
         $sql-> bindValue(":u", $_SESSION['id']);
         $sql-> bindValue(":b", $bairro);
         $sql-> bindValue(":r", $rua);
         $sql-> bindValue(":n", $numero);
         $sql-> bindValue(":c", $complemento);
+        $sql-> bindValue(":p", $preco);
         $sql->execute();
 
         $sql = $pdo->prepare("SELECT LAST_INSERT_ID()");
@@ -279,6 +337,19 @@ class isfrio{
         return $arrayA;
     }
 
+    public function buscarPrecoTotal($id_pedido){
+        global $pdo;
+        $sql = $pdo->prepare("SELECT preco FROM pedidos WHERE id = :i");
+        $sql-> bindValue(":i", $id_pedido);
+        $sql-> execute();
+
+        if($sql->rowCount()>0){
+            $dados = $sql->fetch();
+            return $dados;
+            
+        }
+    }
+
     public function buscarCliente(){
         
         global $pdo;
@@ -314,6 +385,28 @@ class isfrio{
 
         return;
     }
+
+    public function buscarFoto(){
+        global $pdo;
+        $sql = $pdo->prepare("SELECT imagem FROM usuarios WHERE id = :i");
+        $sql-> bindValue(":i", $_SESSION['id']);
+        $sql-> execute();
+
+        $dados = $sql->fetch();
+            
+        return $dados; 
+    }
+
+    public function adicionarFoto($imagem){
+        global $pdo;
+        $sql = $pdo->prepare("UPDATE usuarios SET imagem = :m WHERE id = :i");
+        $sql-> bindValue(":i", $_SESSION['id']);
+        $sql-> bindValue(":m", $imagem);
+        $sql-> execute();
+
+        return;
+    }
+
 }
 
 ?>

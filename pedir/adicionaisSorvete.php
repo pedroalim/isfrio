@@ -9,7 +9,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../styles/pedir.css">
+    <link rel="stylesheet" href="../styles/pedir1.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
@@ -51,23 +51,31 @@
                 }
         
             ?>
-                <input type="submit" value="Proximo">
+                <input type="submit" value="Proximo" name="proximo">
+                <?php             
+                    $proximo = $_POST["proximo"] = (isset($_POST["proximo"])) ? $_POST["proximo"] : null;
+                    if($proximo){
+                        $adicionais = $_POST["adicionais"] = (isset($_POST["adicionais"])) ? $_POST["adicionais"] : null;
+                        if($adicionais != 0){
+                            $adicionais = implode(",", $adicionais);
+                            $_SESSION['adicionais'] = $adicionais;
+                            $valor = $u -> buscarPrecosAdicionais($adicionais);
+                            $adicionaisEx = explode(",", $adicionais);
+                            $quantidadeAdicionais = count($adicionaisEx);
+                            for($i = 0; $i < $quantidadeAdicionais; $i++){
+                                $_SESSION['preco'] =  $_SESSION['preco'] + $valor[$i]["preco"];
+                                print_r($valor[$i]["preco"]);
+                            }
+                            echo"<br>";
+                            echo($_SESSION['preco']);   
+                        } else {
+                            $_SESSION['adicionais'] = "";
+                        }
+                        header("Location: pagamentoSorvete.php");
+                    }
+                ?>
             </form>
         </div>
     </div>
 </body>
 </html>
-
-<?php
-    $adicionais = $_POST["adicionais"] = (isset($_POST["adicionais"])) ? $_POST["adicionais"] : null;
-    $adicionais = implode(",", $adicionais);
-
-    print_r($adicionais);
-
-    $_SESSION['adicionais'] = $adicionais;
-    print_r($_SESSION['adicionais']);
-
-    if ($_SESSION['adicionais'] != 0) {
-        header("Location: pagamentoSorvete.php");
-    } 
-?>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 26-Set-2022 às 16:35
+-- Tempo de geração: 28-Set-2022 às 17:13
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 8.1.2
 
@@ -98,18 +98,22 @@ CREATE TABLE `pedidos` (
   `bairro` varchar(20) NOT NULL,
   `rua` varchar(20) NOT NULL,
   `numero` int(8) NOT NULL,
-  `complemento` varchar(20) DEFAULT NULL
+  `complemento` varchar(20) DEFAULT NULL,
+  `preco` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `pedidos`
 --
 
-INSERT INTO `pedidos` (`id`, `id_usuario`, `bairro`, `rua`, `numero`, `complemento`) VALUES
-(27, 6, 'Jardim América', 'bozo', 123, ''),
-(28, 6, 'Jardim América', 'rua abdala abujamra', 288, ''),
-(29, 6, 'Jardim América', 'rua abdala abujamra', 288, ''),
-(30, 6, 'Jardim América', 'rua abdala abujamra', 288, '');
+INSERT INTO `pedidos` (`id`, `id_usuario`, `bairro`, `rua`, `numero`, `complemento`, `preco`) VALUES
+(27, 6, 'Jardim América', 'bozo', 123, '', ''),
+(28, 6, 'Jardim América', 'rua abdala abujamra', 288, '', ''),
+(29, 6, 'Jardim América', 'rua abdala abujamra', 288, '', ''),
+(30, 6, 'Jardim América', 'rua abdala abujamra', 288, '', ''),
+(31, 8, 'Jardim América', 'rua abdala abujamra', 288, '', ''),
+(32, 8, 'Jardim América', 'rua abdala abujamra', 288, '', ''),
+(33, 8, 'Jardim América', 'rua abdala abujamra', 288, '', '3.25');
 
 -- --------------------------------------------------------
 
@@ -121,8 +125,8 @@ CREATE TABLE `pedidos_complementos` (
   `id` int(11) NOT NULL,
   `id_produto` int(11) NOT NULL,
   `id_cobertura` varchar(11) NOT NULL,
-  `id_massa` varchar(11) NOT NULL,
-  `id_adiconal` varchar(11) NOT NULL,
+  `id_massa` varchar(11) DEFAULT NULL,
+  `id_adiconal` varchar(11) DEFAULT NULL,
   `id_pedido` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -134,7 +138,10 @@ INSERT INTO `pedidos_complementos` (`id`, `id_produto`, `id_cobertura`, `id_mass
 (27, 2, '2', '3', '2', 27),
 (28, 2, '2', '1,2', '1,3', 28),
 (29, 2, '2', '2,3', '1', 29),
-(30, 1, '3', '1', '2', 30);
+(30, 1, '3', '1', '2', 30),
+(31, 2, '', '2', '', 31),
+(32, 2, '', '2,3', '2', 32),
+(33, 2, '3', '3', '1', 33);
 
 -- --------------------------------------------------------
 
@@ -175,9 +182,9 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `email`, `senha`, `nome`, `imagem`) VALUES
-(6, 'bolsonaro@gmail.com', '202cb962ac59075b964b07152d234b70', 'Lucas', ''),
+(6, 'bolsonaro@gmail.com', '202cb962ac59075b964b07152d234b70', 'Lucas', '633376119a63e.jpeg'),
 (7, 'zugor@gmail.com', '202cb962ac59075b964b07152d234b70', 'zugor', ''),
-(8, 'bozo@gmail.com', '202cb962ac59075b964b07152d234b70', 'bozo', '');
+(8, 'bozo@gmail.com', '202cb962ac59075b964b07152d234b70', 'bozo', '8.png');
 
 --
 -- Índices para tabelas despejadas
@@ -251,13 +258,13 @@ ALTER TABLE `massas`
 -- AUTO_INCREMENT de tabela `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT de tabela `pedidos_complementos`
 --
 ALTER TABLE `pedidos_complementos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT de tabela `produtos`

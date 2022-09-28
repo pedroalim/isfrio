@@ -26,7 +26,18 @@
     print_r($perfil["nome"]);
     echo "<br>";
     print_r($perfil["email"]);
-
+    $fotoBanco = $u->buscarFoto();
+    if($fotoBanco[0] != ""){
+        echo "<br>
+        <img src='arquivos/$fotoBanco[0]' width='150px' height='150px'> 
+        <br>
+        ";
+    } else {
+        echo "<br>
+        <img src='arquivos/63337562c51d1.png' width='150px' height='150px'> 
+        <br>
+        ";
+    }
     echo "
     <h2>Atualizar Dados</h2>
     <form method='POST'>
@@ -47,6 +58,13 @@
     <form method="post">
         <input type="submit" name="excluir" value="Excluir">
     </form>
+
+    <h2>Imagem do Perfil</h2>
+    <form enctype="multipart/form-data" method="post">
+        <p><label for="">Selecione o arquivo</label></p>
+        <input name="arquivo" type="file">
+        <input type="submit" name="botaoImg" value="Enviar Imagem">
+    </form>
 </body>
 </html>
 
@@ -56,6 +74,7 @@
     $atualizar = $_POST["atualizar"] = (isset($_POST["atualizar"])) ? $_POST["atualizar"] : null;
     $sair = $_POST["sair"] = (isset($_POST["sair"])) ? $_POST["sair"] : null;
     $excluir = $_POST["excluir"] = (isset($_POST["excluir"])) ? $_POST["excluir"] : null;
+    $botaoImg = $_POST["botaoImg"] = (isset($_POST["botaoImg"])) ? $_POST["botaoImg"] : null;
 
     if($atualizar){
         if($email == ""){
@@ -78,5 +97,34 @@
         $u -> deletarCliente();
         unset($_SESSION['id']);
         header('location: login.php');
+    }
+
+    if($botaoImg){
+        if(isset($_FILES["arquivo"])){
+            $arquivo = $_FILES["arquivo"];
+            $pasta = "arquivos/";
+    
+            if($arquivo['error']){
+                die("Falha ao enviar arquivo");
+            }
+    
+            $nome = $arquivo["name"];
+            $novoNome = $_SESSION['id'];
+            $extensao = strtolower(pathinfo($nome,PATHINFO_EXTENSION));
+    
+            if($extensao != "jpg" && $extensao != "png" && $extensao != "jpeg"){
+                die("Tipo de arquivo não aceito");
+            }
+    
+            $upload = move_uploaded_file($arquivo["tmp_name"], $pasta . $novoNome . "." . $extensao);
+    
+            if($upload){
+                echo "Arquivo Enviado com sucesso!";
+                $u->adicionarFoto($novoNome.".".$extensao);
+                header("Refresh:0");
+            } else {
+                echo "Erro ao enviar arquivo";
+            }
+        }
     }
 ?>
