@@ -54,6 +54,7 @@
                 <input type="submit" value="Proximo" name="proximo">
                 <?php             
                     $proximo = $_POST["proximo"] = (isset($_POST["proximo"])) ? $_POST["proximo"] : null;
+                    $_SESSION["precoA"] = 0;
                     if($proximo){
                         $adicionais = $_POST["adicionais"] = (isset($_POST["adicionais"])) ? $_POST["adicionais"] : null;
                         if($adicionais != 0){
@@ -63,11 +64,11 @@
                             $adicionaisEx = explode(",", $adicionais);
                             $quantidadeAdicionais = count($adicionaisEx);
                             for($i = 0; $i < $quantidadeAdicionais; $i++){
-                                $_SESSION['preco'] =  $_SESSION['preco'] + $valor[$i]["preco"];
+                                $_SESSION['precoA'] =  $_SESSION['precoA'] + $valor[$i]["preco"];
                                 print_r($valor[$i]["preco"]);
                             }
                             echo"<br>";
-                            echo($_SESSION['preco']);   
+                            echo($_SESSION['precoA']);   
                         } else {
                             $_SESSION['adicionais'] = "";
                         }

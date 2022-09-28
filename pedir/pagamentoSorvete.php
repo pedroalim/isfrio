@@ -30,6 +30,7 @@
             <label>Preço: </label>
             <?php
                 session_start();
+                $_SESSION['preco'] = $_SESSION["precoM"] + $_SESSION["precoC"] + $_SESSION["precoA"];
                 echo "$_SESSION[preco]";
             ?>
             <br>

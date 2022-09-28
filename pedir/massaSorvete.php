@@ -68,9 +68,9 @@
                                 $preco = $preco + $valor[$i]["preco"];
                                 print_r($valor[$i]["preco"]);
                             }
-                            $_SESSION['preco'] = $preco;
+                            $_SESSION['precoM'] = $preco;
                             echo"<br>";
-                            echo($_SESSION['preco']);
+                            echo($_SESSION['precoM']);
                             header("Location: coberturaSorvete.php");
                         }  else {
                             echo "<div class='msg-erro'>Escolha um sabor para prosseguir!</div>";

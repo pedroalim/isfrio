@@ -1,8 +1,6 @@
 <?php
-
     require_once '../classes/isfrio.php';
     $u = new isfrio();
-
 ?>
 
 <!DOCTYPE html>
@@ -45,15 +43,16 @@
                     echo " 
                     <br>
                         $nome 
-                        <input type='checkbox' name='coberturas[]' autocomplete='off' value='$id'>
+                        <input type='checkbox' name='coberturas[]' value='$id'>
                     <br>
                     ";
                 }
         
             ?>
-                <input type="submit" value="Proximo" autocomplete='off' name="proximo">
+                <input type="submit" value="Proximo" name="proximo">
                 <?php
                     $proximo = $_POST["proximo"] = (isset($_POST["proximo"])) ? $_POST["proximo"] : null;
+                    $_SESSION["precoC"] = 0;
                     if($proximo){
                         $coberturas = $_POST["coberturas"] = (isset($_POST["coberturas"])) ? $_POST["coberturas"] : null;
                         if($coberturas != 0){
@@ -63,15 +62,15 @@
                             $coberturasEx = explode(",", $coberturas);
                             $quantidadeCoberturas = count($coberturasEx);
                             for($i = 0; $i < $quantidadeCoberturas; $i++){
-                                $_SESSION['preco'] =  $_SESSION['preco'] + $valor[$i]["preco"];
+                                $_SESSION['precoC'] =  $_SESSION['precoC'] + $valor[$i]["preco"];
                                 print_r($valor[$i]["preco"]);
                             }
                             echo"<br>";
-                            echo($_SESSION['preco']);
+                            echo($_SESSION['precoC']);
                         } else {
                             $_SESSION['coberturas'] = "";
                         }
-                        //header("Location: adicionaisSorvete.php");
+                        header("Location: adicionaisSorvete.php");
                     }
                 ?>
             </form>
