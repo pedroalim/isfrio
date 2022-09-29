@@ -10,7 +10,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Isfrio</title>
-    <link rel="stylesheet" href="styles/entrar.css">
+    <link rel="stylesheet" href="styles/entrar1.css">
 </head>
 <body>
 <div id="fundo">

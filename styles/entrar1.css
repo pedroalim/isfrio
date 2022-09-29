@@ -47,17 +47,24 @@ a {
 
 #fundo {
     background-image: url('../imagens/background.png');
-    height: 100vh;
+    background-size: 100% 100%;
+    display: block;
+    height:auto;
+    width:auto;
     background-repeat: no-repeat;
+    min-width: 100vh;
+    min-height: 100vh;
 }
 
 #formulario {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     margin-top: 20px;
     background: rgba(39, 38, 38, 0.6);
     border-radius: 50px;
     height: 450px;
     width: 660px;
-    margin-left: 25%;
     padding-top: 3%;
 }
 

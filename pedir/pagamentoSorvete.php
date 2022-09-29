@@ -9,7 +9,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../styles/pedir1.css">
+    <link rel="stylesheet" href="../styles/pedir.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
@@ -19,7 +19,7 @@
    
     <div id="navegador">
         <a href="../home.php" id="cancelar"><p>X | Cancelar</p></a>
-        <img src="../imagens/navegador1.png" id="imgNavegador" alt="" width="450px" height="50px">
+        <img src="../imagens/navegador5.png" id="imgNavegador" alt="" width="450px" height="50px">
     </div>
     <div id="background">
         <div id="etapa">
@@ -27,14 +27,14 @@
         </div>
         <div id="campo">
         <form method="post">
-            <label>Preço: </label>
+            <label>Preço Total: $</label>
             <?php
                 session_start();
                 $_SESSION['preco'] = $_SESSION["precoM"] + $_SESSION["precoC"] + $_SESSION["precoA"];
                 echo "$_SESSION[preco]";
             ?>
             <br>
-            <h2>Endereço para entrega:</h2>
+            <h3>Endereço para entrega:</h3>
             <br>
             <label>Bairro</label>
             <input type="text" name="bairro">
@@ -62,7 +62,7 @@
             ?>
             <br>
             <p>Pagamento na entrega</p>
-                <input type="submit" value="Concluir" name="concluir">
+                <input type="submit" value="Concluir" name="concluir" class="btnProximo">
                 <?php
                     $concluir = $_POST["concluir"] = (isset($_POST["concluir"])) ? $_POST["concluir"] : null;
 
@@ -86,15 +86,3 @@
     </div>
 </body>
 </html>
-
-<?php
-    print_r($_SESSION['modelo']);
-    echo "<br>";
-    print_r($_SESSION['massas']);
-    echo "<br>";
-    print_r($_SESSION['coberturas']);
-    echo "<br>";
-    print_r($_SESSION['adicionais']);
-    echo "<br>";
-
-?>

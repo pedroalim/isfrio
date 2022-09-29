@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 28-Set-2022 às 17:13
+-- Tempo de geração: 29-Set-2022 às 17:11
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 8.1.2
 
@@ -113,7 +113,8 @@ INSERT INTO `pedidos` (`id`, `id_usuario`, `bairro`, `rua`, `numero`, `complemen
 (30, 6, 'Jardim América', 'rua abdala abujamra', 288, '', ''),
 (31, 8, 'Jardim América', 'rua abdala abujamra', 288, '', ''),
 (32, 8, 'Jardim América', 'rua abdala abujamra', 288, '', ''),
-(33, 8, 'Jardim América', 'rua abdala abujamra', 288, '', '3.25');
+(33, 8, 'Jardim América', 'rua abdala abujamra', 288, '', '3.25'),
+(34, 6, 'Jardim América', 'rua abdala abujamra', 288, '', '4.75');
 
 -- --------------------------------------------------------
 
@@ -141,7 +142,8 @@ INSERT INTO `pedidos_complementos` (`id`, `id_produto`, `id_cobertura`, `id_mass
 (30, 1, '3', '1', '2', 30),
 (31, 2, '', '2', '', 31),
 (32, 2, '', '2,3', '2', 32),
-(33, 2, '3', '3', '1', 33);
+(33, 2, '3', '3', '1', 33),
+(34, 2, '', '1,3', '2', 34);
 
 -- --------------------------------------------------------
 
@@ -182,7 +184,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `email`, `senha`, `nome`, `imagem`) VALUES
-(6, 'bolsonaro@gmail.com', '202cb962ac59075b964b07152d234b70', 'Lucas', '633376119a63e.jpeg'),
+(6, 'bolsonaro@gmail.com', '202cb962ac59075b964b07152d234b70', 'Lucas', '6.png'),
 (7, 'zugor@gmail.com', '202cb962ac59075b964b07152d234b70', 'zugor', ''),
 (8, 'bozo@gmail.com', '202cb962ac59075b964b07152d234b70', 'bozo', '8.png');
 
@@ -258,13 +260,13 @@ ALTER TABLE `massas`
 -- AUTO_INCREMENT de tabela `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT de tabela `pedidos_complementos`
 --
 ALTER TABLE `pedidos_complementos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT de tabela `produtos`

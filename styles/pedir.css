@@ -46,8 +46,18 @@
 
 #background {
     background-image: url('../imagens/backgroundMontar.png');
-    height: 100vh;
+    background-size: 100% 100%;
+    display: block;
+    height:auto;
+    width:auto;
     background-repeat: no-repeat;
+    min-width: 100vh;
+    min-height: 100vh;
+}
+
+#background img {
+    width: auto;
+    height: auto;
 }
 
 h2 {
@@ -57,13 +67,7 @@ h2 {
 }
 
 #campo{
-    background-color: white;
-    margin-top: 2%;
-    margin-left: 20%;
-    height: 500px;
-    width: 800px;
-    border: 1px solid black;
-    border-radius: 40px;
+    padding-bottom: 2%;
 }
 
 .msg-erro{
@@ -74,5 +78,36 @@ h2 {
     background-color: rgba(250, 128, 114, .3);
     border: 1px solid rgb(165, 42, 42);
     text-align: center;
+
+}
+
+form {
+    padding: 15px;
+    background-color: white;
+    margin-top: 2%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 6em;
+    width: 800px;
+    border: 1px solid black;
+    border-radius: 40px;
+    height:auto;
+    overflow:hidden;
+    min-height: 400px;
+}
+
+.btnProximo {
+    background-color: rgb(32, 137, 239);
+    color: white;
+    font-size: 20px;
+    border: none;
+    border-radius: 50px;
+    box-shadow: 5px 5px 5px black;
+    padding: 15px;
+    padding-left: 25px;
+    padding-rigth: 25px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 
 }

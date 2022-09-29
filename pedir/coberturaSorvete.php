@@ -7,7 +7,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../styles/pedir1.css">
+    <link rel="stylesheet" href="../styles/pedir.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
@@ -17,7 +17,7 @@
    
     <div id="navegador">
         <a href="../home.php" id="cancelar"><p>X | Cancelar</p></a>
-        <img src="../imagens/navegador1.png" id="imgNavegador" alt="" width="450px" height="50px">
+        <img src="../imagens/navegador3.png" id="imgNavegador" alt="" width="450px" height="50px">
     </div>
     <div id="background">
         <div id="etapa">
@@ -25,6 +25,9 @@
         </div>
         <div id="campo">
         <form method="post">
+        <p>Campo <strong>não</strong> obrigatório</p>
+        <br>
+        <h3>Escolha os sabores da cobertura:</h3>
             <?php
         
                 session_start();
@@ -42,14 +45,14 @@
                     $id = $coberturas[$i]["id"];
                     echo " 
                     <br>
-                        $nome 
-                        <input type='checkbox' name='coberturas[]' value='$id'>
+                        <input type='checkbox' name='coberturas[]' value='$id' id='$id'>
+                        <label for='$id'>$nome</label>
                     <br>
                     ";
                 }
         
             ?>
-                <input type="submit" value="Proximo" name="proximo">
+                <input type="submit" value="Proximo" name="proximo" class="btnProximo">
                 <?php
                     $proximo = $_POST["proximo"] = (isset($_POST["proximo"])) ? $_POST["proximo"] : null;
                     $_SESSION["precoC"] = 0;
