@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 29-Set-2022 às 17:11
+-- Tempo de geração: 30-Set-2022 às 03:53
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 8.1.2
 
@@ -107,14 +107,10 @@ CREATE TABLE `pedidos` (
 --
 
 INSERT INTO `pedidos` (`id`, `id_usuario`, `bairro`, `rua`, `numero`, `complemento`, `preco`) VALUES
-(27, 6, 'Jardim América', 'bozo', 123, '', ''),
-(28, 6, 'Jardim América', 'rua abdala abujamra', 288, '', ''),
-(29, 6, 'Jardim América', 'rua abdala abujamra', 288, '', ''),
-(30, 6, 'Jardim América', 'rua abdala abujamra', 288, '', ''),
-(31, 8, 'Jardim América', 'rua abdala abujamra', 288, '', ''),
-(32, 8, 'Jardim América', 'rua abdala abujamra', 288, '', ''),
 (33, 8, 'Jardim América', 'rua abdala abujamra', 288, '', '3.25'),
-(34, 6, 'Jardim América', 'rua abdala abujamra', 288, '', '4.75');
+(34, 6, 'Jardim América', 'rua abdala abujamra', 288, '', '4.75'),
+(35, 6, 'Jardim América', 'rua abdala abujamra', 288, '', '5'),
+(36, 7, 'Jardim América', 'rua abdala abujamra', 288, '', '6.4');
 
 -- --------------------------------------------------------
 
@@ -136,14 +132,10 @@ CREATE TABLE `pedidos_complementos` (
 --
 
 INSERT INTO `pedidos_complementos` (`id`, `id_produto`, `id_cobertura`, `id_massa`, `id_adiconal`, `id_pedido`) VALUES
-(27, 2, '2', '3', '2', 27),
-(28, 2, '2', '1,2', '1,3', 28),
-(29, 2, '2', '2,3', '1', 29),
-(30, 1, '3', '1', '2', 30),
-(31, 2, '', '2', '', 31),
-(32, 2, '', '2,3', '2', 32),
 (33, 2, '3', '3', '1', 33),
-(34, 2, '', '1,3', '2', 34);
+(34, 2, '', '1,3', '2', 34),
+(35, 1, '2', '1,2', '', 35),
+(36, 2, '1,2', '2,3', '3', 36);
 
 -- --------------------------------------------------------
 
@@ -185,7 +177,7 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id`, `email`, `senha`, `nome`, `imagem`) VALUES
 (6, 'bolsonaro@gmail.com', '202cb962ac59075b964b07152d234b70', 'Lucas', '6.png'),
-(7, 'zugor@gmail.com', '202cb962ac59075b964b07152d234b70', 'zugor', ''),
+(7, 'zugor@gmail.com', '202cb962ac59075b964b07152d234b70', 'zugor', '7.jpeg'),
 (8, 'bozo@gmail.com', '202cb962ac59075b964b07152d234b70', 'bozo', '8.png');
 
 --
@@ -260,13 +252,13 @@ ALTER TABLE `massas`
 -- AUTO_INCREMENT de tabela `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT de tabela `pedidos_complementos`
 --
 ALTER TABLE `pedidos_complementos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT de tabela `produtos`

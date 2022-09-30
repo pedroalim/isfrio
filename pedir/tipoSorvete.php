@@ -9,10 +9,11 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../styles/pedir.css">
+    <link rel="stylesheet" href="../styles/pedir1.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
+    <link rel="icon"  href="../imagens/icon-isfrio.png"/>
     <title>isfrio</title>
 </head>
 <body>
@@ -28,7 +29,7 @@
             <form method="post">
             <p>* Campo obrigatório</p>
             <br>
-            <h3>Escolha o modelo:</h3>
+            <h3>Escolha o modelo: </h3>
                 <?php
             
                     session_start();

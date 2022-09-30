@@ -11,6 +11,7 @@
     <meta charset="UTF-8">
     <title>Isfrio</title>
     <link rel="stylesheet" href="styles/entrar1.css">
+    <link rel="icon"  href="imagens/icon-isfrio.png"/>
 </head>
 <body>
 <div id="fundo">

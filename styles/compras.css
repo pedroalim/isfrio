@@ -1,0 +1,107 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+#superior {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    background-color: rgb(32,137,239);
+    height: 90px;
+}
+
+.fundo {
+    background-color: rgb(255,234,239);
+    display: block;
+    heigth: 100%;
+    min-height: 100vh;
+}
+
+.navegador {
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    padding-top: 15%;
+    font-size: 25px;
+    font-weight: 900;
+    font-family: 'Inter', sans-serif;
+}
+
+#selecionado {
+    color: rgb(36,206,186);
+}
+
+#botaoLogo {
+    display: grid;
+    grid-column-start: 1;
+    grid-column-end: 1;
+    margin-top: 2px;
+    margin-left: 5%;
+    width: 200px;
+    height: 70px;
+}
+
+#botaoHome {
+    display: grid;
+    grid-column-start: 2;
+    grid-column-end: 2;
+    margin-top: 2px;
+    margin-left: 25%;
+}
+
+#botaoContato {
+    display: grid;
+    grid-column-start: 3;
+    grid-column-end: 3;
+    margin-top: 2px;
+    margin-left: 25%;
+}
+
+#botaoSorvete {
+    display: grid;
+    grid-column-start: 4;
+    grid-column-end: 4;
+    margin-top: 2px;
+    margin-left: 25%;
+}
+
+#botaoCarrinho {
+    display: grid;
+    grid-column-start: 5;
+    grid-column-end: 5;
+    margin-left: 25%;
+}
+
+#botaoPerfil {
+    display: grid;
+    grid-column-start: 6;
+    grid-column-end: 6;
+    margin-left: 25%;
+}
+
+#imagemSuperior{
+    margin-top: 10%;
+    margin-left: 25%;
+    background-color: rgb(255,234,239);
+    border-radius: 50px;
+}
+
+#campo {
+    padding: 25px;
+    background-color: white;
+    margin-top: 2%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 6em;
+    width: 600px;
+    border-radius: 40px;
+    height:auto;
+    overflow:hidden;
+    min-height: 400px;
+}
+
+h2 {
+    margin-left: 5%;
+}
+
+
