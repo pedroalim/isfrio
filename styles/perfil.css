@@ -159,3 +159,11 @@ h2 {
     text-decoration: none;
     box-shadow: 5px 5px 5px black;
 }
+
+#btnsair:hover{
+    cursor: pointer;
+}
+
+#btnexcluir:hover{
+    cursor: pointer;
+}

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 30-Set-2022 às 03:53
+-- Tempo de geração: 30-Set-2022 às 15:38
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 8.1.2
 
@@ -42,7 +42,10 @@ CREATE TABLE `adicionais` (
 INSERT INTO `adicionais` (`id`, `nome`, `preco`) VALUES
 (1, 'M&M’s', '0.50'),
 (2, 'Chocolates', '0.75'),
-(3, 'Marshmallows', '0.40');
+(3, 'Marshmallows', '0.40'),
+(4, 'Castanha de caju', '1.05'),
+(5, 'Bala fini', '0.90'),
+(6, 'Paçoquinha', '1.05');
 
 -- --------------------------------------------------------
 
@@ -63,7 +66,11 @@ CREATE TABLE `coberturas` (
 INSERT INTO `coberturas` (`id`, `nome`, `preco`) VALUES
 (1, 'Beterraba', '1.00'),
 (2, 'Churros', '1.00'),
-(3, 'Kiwi', '0.75');
+(3, 'Kiwi', '0.75'),
+(4, 'Chocolate', '1.05'),
+(5, 'Cenoura', '0.75'),
+(6, 'Chocolate branco', '1.00'),
+(7, 'Morango', '0.90');
 
 -- --------------------------------------------------------
 
@@ -84,7 +91,12 @@ CREATE TABLE `massas` (
 INSERT INTO `massas` (`id`, `nome`, `preco`) VALUES
 (1, 'Beterraba', '2.00'),
 (2, 'Chocolate', '2.00'),
-(3, 'Banana', '2.00');
+(3, 'Banana', '2.00'),
+(4, 'Abacaxi', '1.75'),
+(5, 'Laranja', '1.90'),
+(6, 'Limão', '1.50'),
+(7, 'Jabuticaba', '1.50'),
+(8, 'Uva', '1.75');
 
 -- --------------------------------------------------------
 
@@ -110,7 +122,9 @@ INSERT INTO `pedidos` (`id`, `id_usuario`, `bairro`, `rua`, `numero`, `complemen
 (33, 8, 'Jardim América', 'rua abdala abujamra', 288, '', '3.25'),
 (34, 6, 'Jardim América', 'rua abdala abujamra', 288, '', '4.75'),
 (35, 6, 'Jardim América', 'rua abdala abujamra', 288, '', '5'),
-(36, 7, 'Jardim América', 'rua abdala abujamra', 288, '', '6.4');
+(36, 7, 'Jardim América', 'rua abdala abujamra', 288, '', '6.4'),
+(37, 7, 'Jardim América', 'rua abdala abujamra', 288, '', '6.25'),
+(38, 6, 'Jardim América', 'rua abdala abujamra', 288, '', '6.3');
 
 -- --------------------------------------------------------
 
@@ -135,7 +149,9 @@ INSERT INTO `pedidos_complementos` (`id`, `id_produto`, `id_cobertura`, `id_mass
 (33, 2, '3', '3', '1', 33),
 (34, 2, '', '1,3', '2', 34),
 (35, 1, '2', '1,2', '', 35),
-(36, 2, '1,2', '2,3', '3', 36);
+(36, 2, '1,2', '2,3', '3', 36),
+(37, 2, '2,3', '1,2', '1', 37),
+(38, 2, '3,5', '5,7', '1,5', 38);
 
 -- --------------------------------------------------------
 
@@ -177,7 +193,6 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id`, `email`, `senha`, `nome`, `imagem`) VALUES
 (6, 'bolsonaro@gmail.com', '202cb962ac59075b964b07152d234b70', 'Lucas', '6.png'),
-(7, 'zugor@gmail.com', '202cb962ac59075b964b07152d234b70', 'zugor', '7.jpeg'),
 (8, 'bozo@gmail.com', '202cb962ac59075b964b07152d234b70', 'bozo', '8.png');
 
 --
@@ -234,31 +249,31 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de tabela `adicionais`
 --
 ALTER TABLE `adicionais`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `coberturas`
 --
 ALTER TABLE `coberturas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de tabela `massas`
 --
 ALTER TABLE `massas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de tabela `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT de tabela `pedidos_complementos`
 --
 ALTER TABLE `pedidos_complementos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT de tabela `produtos`

@@ -14,7 +14,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="styles/perfil1.css">
+    <link rel="stylesheet" href="styles/perfil.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
@@ -116,7 +116,7 @@
         </form>
     </div>
     <div id="excluir">
-    <h3>Excluir da Conta</h3>
+    <h3>Excluir a Conta</h3>
     <br>
         <form method="post">
             <input type="submit" name="excluir" value="🗑 | Excluir" id="btnexcluir">
